@@ -1,4 +1,4 @@
-package com.workshop.planner.resources;
+package com.workshop.planner.controllers;
 
 import java.util.List;
 
@@ -9,26 +9,27 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.workshop.planner.entities.Trip;
-import com.workshop.planner.services.TripService;
+import com.workshop.planner.dto.UserDTO;
+import com.workshop.planner.entities.User;
+import com.workshop.planner.services.UserService;
 
 @RestController
-@RequestMapping(value = "/trips")
-public class TripResource {
+@RequestMapping(value = "/users")
+public class UserController {
 
 	@Autowired
-	private TripService service;
+	private UserService service;
 	
 	@GetMapping
-	public ResponseEntity<List<Trip>> findAll(){
-		List<Trip> list = service.findAll();
+	public ResponseEntity<List<UserDTO>> findAll(){
+		List<UserDTO> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Trip> findById(@PathVariable Long id){
-		Trip trip = service.findById(id);
+	public ResponseEntity<User> findById(@PathVariable Long id){
+		User user = service.findById(id);
 		
-		return ResponseEntity.ok().body(trip);
+		return ResponseEntity.ok().body(user);
 	}
 }
