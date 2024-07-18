@@ -1,11 +1,14 @@
 package com.workshop.planner.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,4 +29,7 @@ public class User implements Serializable{
 	private Long id;
 	private String name;
 	private String email;
+	
+	@OneToMany(mappedBy = "traveler")
+	private List<Trip> trips = new ArrayList<>();
 }
