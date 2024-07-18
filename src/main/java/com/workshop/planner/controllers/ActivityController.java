@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.workshop.planner.dto.ActivityDTO;
-import com.workshop.planner.entities.Activity;
 import com.workshop.planner.services.ActivityService;
 
 @RestController
@@ -27,8 +26,8 @@ public class ActivityController {
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Activity> findById(@PathVariable Long id){
-		Activity act = service.findById(id);
+	public ResponseEntity<ActivityDTO> findById(@PathVariable Long id){
+		ActivityDTO act = service.findById(id);
 		return ResponseEntity.ok().body(act);
 	}
 }

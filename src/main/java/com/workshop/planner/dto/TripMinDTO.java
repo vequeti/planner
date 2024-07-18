@@ -1,8 +1,6 @@
 package com.workshop.planner.dto;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.workshop.planner.entities.Trip;
 
@@ -15,7 +13,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TripDTO {
+public class TripMinDTO {
 
 	private Long id;
 	private String travelerName;
@@ -24,9 +22,7 @@ public class TripDTO {
 	private LocalDateTime endsAt;
 	private boolean isConfirmed;
 	
-	private List<ActivityMinDTO> activities = new ArrayList<>();
-	
-	public TripDTO (Trip entity) {
+	public TripMinDTO (Trip entity) {
 		super();
 		id = entity.getId();
 		travelerName = entity.getTraveler().getName();
@@ -34,6 +30,5 @@ public class TripDTO {
 		startsAt = entity.getStartsAt();
 		endsAt = entity.getEndsAt();
 		isConfirmed = entity.isConfirmed();
-		entity.getActivities().forEach(act -> this.activities.add(new ActivityMinDTO(act)));
 	}
 }

@@ -35,8 +35,8 @@ public class TestConfig implements CommandLineRunner{
 
 		userRepository.saveAll(Arrays.asList(u1, u2));
 		
-		Trip t1 = new Trip(null, u1, "Rio de Janeiro", LocalDateTime.of(2024, 2, 1, 10, 0), LocalDateTime.of(2024, 2, 10, 10, 0), false);
-		Trip t2 = new Trip(null, u2, "Rio de Janeiro", LocalDateTime.of(2024, 2, 1, 10, 0), LocalDateTime.of(2024, 2, 10, 10, 0), false);
+		Trip t1 = new Trip(null, u1, "Rio de Janeiro", LocalDateTime.of(2024, 2, 1, 10, 0), LocalDateTime.of(2024, 2, 10, 10, 0), false, null);
+		Trip t2 = new Trip(null, u2, "Rio de Janeiro", LocalDateTime.of(2024, 2, 1, 10, 0), LocalDateTime.of(2024, 2, 10, 10, 0), false, null);
 
 		tripRepository.saveAll(Arrays.asList(t1, t2));
 		

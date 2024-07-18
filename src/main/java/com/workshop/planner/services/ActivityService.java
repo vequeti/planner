@@ -1,7 +1,6 @@
 package com.workshop.planner.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +8,9 @@ import org.springframework.stereotype.Service;
 import com.workshop.planner.dto.ActivityDTO;
 import com.workshop.planner.entities.Activity;
 import com.workshop.planner.repositories.ActivityRepository;
+import com.workshop.planner.services.exceptions.ResourceNotFoundException;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class ActivityService {
@@ -21,9 +23,13 @@ public class ActivityService {
 		return list.stream().map(x -> new ActivityDTO(x)).toList();
 	}
 	
-	public Activity findById(Long id) {
-		Optional<Activity> act = repository.findById(id);
-		
-		return act.get();
+	public ActivityDTO findById(Long id) {
+		try{
+			Activity trip = repository.findById(id).get();
+			return new ActivityDTO(trip);
+		}
+		catch(EntityNotFoundException e) {
+			throw new ResourceNotFoundException(id);
+		}
 	}
 }

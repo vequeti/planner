@@ -8,7 +8,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
@@ -33,8 +32,6 @@ public class Activity implements Serializable{
 	private LocalDateTime occursAt;
 
 	@ManyToOne
-	@JoinTable(name ="tb_trip_activity",
-	joinColumns = @JoinColumn(name = "activity_id"),
-	inverseJoinColumns = @JoinColumn(name = "trip_id"))
+	@JoinColumn(name = "trip_id")
 	private Trip trip;	
 }
