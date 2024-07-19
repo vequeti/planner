@@ -22,9 +22,9 @@ public class TripUserDTO {
 	
 	public TripUserDTO (Trip entity) {
 		super();
-		destination = entity.getDestination();
-		startsAt = entity.getStartsAt();
-		endsAt = entity.getEndsAt();
-		isConfirmed = entity.isConfirmed();
+		this.destination = entity.getDestination();
+		this.startsAt = entity.getStartsAt();
+		this.endsAt = entity.getEndsAt();
+		this.isConfirmed = entity.isConfirmed();
 	}
 }

@@ -24,11 +24,11 @@ public class TripMinDTO {
 	
 	public TripMinDTO (Trip entity) {
 		super();
-		id = entity.getId();
-		travelerName = entity.getTraveler().getName();
-		destination = entity.getDestination();
-		startsAt = entity.getStartsAt();
-		endsAt = entity.getEndsAt();
-		isConfirmed = entity.isConfirmed();
+		this.id = entity.getId();
+		this.travelerName = entity.getTraveler().getName();
+		this.destination = entity.getDestination();
+		this.startsAt = entity.getStartsAt();
+		this.endsAt = entity.getEndsAt();
+		this.isConfirmed = entity.isConfirmed();
 	}
 }

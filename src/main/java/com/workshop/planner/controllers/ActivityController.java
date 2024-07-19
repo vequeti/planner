@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.workshop.planner.dto.ActivityCreateDTO;
 import com.workshop.planner.dto.ActivityDTO;
 import com.workshop.planner.services.ActivityService;
 
@@ -29,5 +32,11 @@ public class ActivityController {
 	public ResponseEntity<ActivityDTO> findById(@PathVariable Long id){
 		ActivityDTO act = service.findById(id);
 		return ResponseEntity.ok().body(act);
+	}
+	
+	@PostMapping
+	public ResponseEntity<ActivityCreateDTO> insert(@RequestBody ActivityCreateDTO activity){
+		activity = service.insert(activity);
+		return ResponseEntity.ok(activity);
 	}
 }

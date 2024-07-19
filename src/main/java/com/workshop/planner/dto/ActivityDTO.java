@@ -22,10 +22,10 @@ public class ActivityDTO {
 	private String tripOwner;
 	
 	public ActivityDTO(Activity entity) {
-		id = entity.getId();
-		title = entity.getTitle();
-		occursAt = entity.getOccursAt();
-		trip = entity.getTrip().getDestination();
-		tripOwner = entity.getTrip().getTraveler().getName();
+		this.id = entity.getId();
+		this.title = entity.getTitle();
+		this.occursAt = entity.getOccursAt();
+		this.trip = entity.getTrip().getDestination();
+		this.tripOwner = entity.getTrip().getTraveler().getName();
 	}
 }

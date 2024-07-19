@@ -22,9 +22,9 @@ public class UserDTO {
 	private List<TripUserDTO> trips = new ArrayList<>();
 	
 	public UserDTO (User entity) {
-		id = entity.getId();
-		name = entity.getName();
-		email = entity.getEmail();
+		this.id = entity.getId();
+		this.name = entity.getName();
+		this.email = entity.getEmail();
 		
 		entity.getTrips().forEach(trip -> this.trips.add(new TripUserDTO(trip)));
 	}

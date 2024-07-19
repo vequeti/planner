@@ -29,11 +29,13 @@ public class TripService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Transactional
 	public List<TripMinDTO> findAll(){
 		List<Trip> list = repository.findAll();
 		return list.stream().map(x -> new TripMinDTO(x)).toList();
 	}
 	
+	@Transactional
 	public TripDTO findById (Long id) {
 		try{
 			Trip trip = repository.findById(id).get();
@@ -50,8 +52,13 @@ public class TripService {
 		
 		trip.setDestination(obj.getDestination());
 		
-		User user = userRepository.findById(obj.getTravelerId()).get();
-		trip.setTraveler(user);
+		try {
+			User user = userRepository.findById(obj.getTravelerId()).get();
+			trip.setTraveler(user);
+		}
+		catch(EntityNotFoundException e) {
+			throw new ResourceNotFoundException(obj.getTravelerId());
+		}
 		
 		
 		trip.setStartsAt(obj.getStartsAt());
@@ -63,6 +70,7 @@ public class TripService {
 		return new TripCreateDTO(trip);
 	}
 	
+	@Transactional
 	public Trip update(Long id, Trip trip) {
 		try {
 			Trip entity = repository.getReferenceById(id);
@@ -74,6 +82,7 @@ public class TripService {
 		}
 	}
 	
+	@Transactional
 	public void updateData(Trip entity, Trip trip) {
 		if(trip.getDestination() != null) {
 			entity.setDestination(trip.getDestination());
@@ -86,6 +95,7 @@ public class TripService {
 		}
 	}
 	
+	@Transactional
 	public void delete(Long id) {
 		try {
 			repository.deleteById(id);

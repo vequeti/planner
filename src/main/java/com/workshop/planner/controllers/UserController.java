@@ -1,6 +1,5 @@
 package com.workshop.planner.controllers;
 
-import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.workshop.planner.dto.UserCreateDTO;
 import com.workshop.planner.dto.UserDTO;
-import com.workshop.planner.entities.User;
 import com.workshop.planner.services.UserService;
 
 @RestController
@@ -31,16 +29,15 @@ public class UserController {
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<User> findById(@PathVariable Long id){
-		User user = service.findById(id);
+	public ResponseEntity<UserDTO> findById(@PathVariable Long id){
+		UserDTO user = service.findById(id);
 		
 		return ResponseEntity.ok().body(user);
 	}
 	
 	@PostMapping
-	public ResponseEntity<User> createUser(@RequestBody User user){
+	public ResponseEntity<UserCreateDTO> createUser(@RequestBody UserCreateDTO user){
 		user = service.insert(user);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId()).toUri();
-		return ResponseEntity.created(uri).body(user);
+		return ResponseEntity.ok(user);
 	}
 }

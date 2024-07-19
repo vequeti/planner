@@ -13,15 +13,17 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ActivityMinDTO {
-
+public class ActivityCreateDTO {
+	
 	private Long id;
 	private String title;
 	private LocalDateTime occursAt;
-	
-	public ActivityMinDTO(Activity entity) {
+	private Long tripId;
+
+	public ActivityCreateDTO(Activity entity) {
 		this.id = entity.getId();
 		this.title = entity.getTitle();
 		this.occursAt = entity.getOccursAt();
+		this.tripId = entity.getTrip().getId();
 	}
 }

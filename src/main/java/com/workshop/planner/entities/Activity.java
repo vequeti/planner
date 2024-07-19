@@ -3,6 +3,7 @@ package com.workshop.planner.entities;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,6 +30,8 @@ public class Activity implements Serializable{
 	
 	@Lob
 	private String title;
+	
+	@Column(name = "occurs_at")
 	private LocalDateTime occursAt;
 
 	@ManyToOne

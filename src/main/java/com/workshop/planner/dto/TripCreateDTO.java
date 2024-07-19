@@ -23,10 +23,10 @@ public class TripCreateDTO {
 	
 	public TripCreateDTO (Trip entity) {
 		super();
-		id = entity.getId();
-		travelerId = entity.getTraveler().getId();
-		destination = entity.getDestination();
-		startsAt = entity.getStartsAt();
-		endsAt = entity.getEndsAt();
+		this.id = entity.getId();
+		this.travelerId = entity.getTraveler().getId();
+		this.destination = entity.getDestination();
+		this.startsAt = entity.getStartsAt();
+		this.endsAt = entity.getEndsAt();
 	}
 }
