@@ -78,9 +78,4 @@ public class UserService {
 			throw new DatabaseException(e.getMessage());
 		}
 	}
-	
-	public User findByName(String name){
-		User user = repository.findByName(name);
-		return user;
-	}
 }
