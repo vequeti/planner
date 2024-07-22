@@ -107,4 +107,16 @@ public class TripService {
 			throw new DatabaseException(e.getMessage());
 		}
 	}
+	
+	@Transactional
+	public TripDTO confirmTrip(Long id) {
+		try {
+			Trip trip = repository.getReferenceById(id);
+			trip.setConfirmed(true);
+			return new TripDTO(trip);
+		}
+		catch(EntityNotFoundException e) {
+			throw new ResourceNotFoundException(id);
+		}
+	}
 }

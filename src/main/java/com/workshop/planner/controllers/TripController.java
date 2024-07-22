@@ -35,7 +35,7 @@ public class TripController {
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<TripDTO> findById(@PathVariable Long id){
 		TripDTO trip = service.findById(id);
-		return ResponseEntity.ok().body(trip);
+		return ResponseEntity.ok(trip);
 	}
 	
 	@PostMapping
@@ -54,5 +54,11 @@ public class TripController {
 	public ResponseEntity<Void> deleteTrip(@PathVariable Long id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
+	}
+	
+	@GetMapping("/{id}/confirm")
+	public ResponseEntity<TripDTO> confirmTrip(@PathVariable Long id){
+		TripDTO trip = service.confirmTrip(id);
+		return ResponseEntity.ok(trip);
 	}
 }
